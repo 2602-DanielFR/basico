@@ -1,0 +1,14 @@
+<h1>Registro Usuario</h1>
+<form method="post" action="/usuario/actualizar">
+    {% for usuario in usuarios %}
+    <input type="text" name="username" placeholder="Ingrese su username" value="{{usuario[1]}}"><br>    
+    <input type="text" name="nombres" placeholder="Ingrese su nombre" value="{{usuario[3]}}"><br>
+    <input type="text" name="apellidos" placeholder="Ingrese su apellido" value="{{usuario[4]}}"><br>
+    <input type="hidden" name="id" value="{{usuario[0]}}">
+    <select name="tipo">
+        <option value="estudiante"{% if(usuario[5]=='estudiante')%} selected {% endif%}>Estudiante</option>
+        <option value="profesor" {% if(usuario[5]=='profesor')%} selected {% endif%}>Profesor</option>
+    </select><br>
+    {% endfor %}
+    <input type="submit" value="Actualizar">
+</form>
